@@ -47,6 +47,12 @@ jobs:
           'src/contracts/instances/VariableDebtTokenMainnetInstanceGHO.sol' \
           'src/contracts/instances/PoolConfiguratorInstance.sol'
 
+      - name: Upload coverage reports to Datadog
+        uses: DataDog/coverage-upload-github-action@v1
+        with:
+          api_key: ${{ secrets.DD_API_KEY }}
+          site: us5.datadoghq.com
+
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@ea99328d1c4d5f39fda7cbffe104afd6906c50b0
         with:
